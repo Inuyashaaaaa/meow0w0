@@ -4,11 +4,14 @@ import Button, { ButtonType, ButtonSize } from './components/Button/button'
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
+        <FontAwesomeIcon icon={faCoffee} size="10x"/>
         <Menu defaultIndex={'0'} mode="horizontal">
           <MenuItem>
             meow-menu-item-1

@@ -56,6 +56,7 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
       } else {
         console.error('Wraning: subMenu has a child which is not a MenuItem component')
       }
+      return child
     })
     return (
       <Transition

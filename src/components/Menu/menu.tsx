@@ -61,6 +61,7 @@ const Menu: React.FC<MenuProps> = (props) => {
       } else {
         console.error('Wraning: Menu has a child which is not a MenuItem component')
       }
+      return child
     })
   }
   return (

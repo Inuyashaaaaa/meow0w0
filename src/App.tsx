@@ -35,7 +35,8 @@ const App: React.FC = () => {
         <Transition
           in={show}
           timeout={300}
-          animation="zoom-in-left"
+          animation="zoom-in-top"
+          wrapper
         >
           <Button size='lg' btnType='primary'>哈哈</Button>
         </Transition>

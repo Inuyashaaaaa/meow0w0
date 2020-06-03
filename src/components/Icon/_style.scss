@@ -1,0 +1,5 @@
+@each $key, $val in $theme-colors {
+  .meow-icon-#{$key} {
+    color: $val
+  }
+}

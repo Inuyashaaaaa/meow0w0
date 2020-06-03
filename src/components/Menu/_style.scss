@@ -8,6 +8,7 @@
   box-shadow: $menu-box-shadow;
   >.meow-menu-item {
     padding: $menu-item-padding-y $menu-item-padding-x;
+    // margin-bottom: 0.2rem;
     // border-bottom: $menu-item-active-border-width solid transparent;
     cursor: pointer;
     transition: $menu-transition;
@@ -26,13 +27,15 @@
   }
   .meow-submenu-item {
     position: relative;
+    .arrow-icon {
+      transition: transform .3s ease-in-out
+    }
   }
   .meow-submenu {
-    display: none;
+    margin-top: 0.6rem;
     list-style:none;
     padding-left: 0;
     white-space: nowrap;
-    //transition: $menu-transition;
     .meow-menu-item {
       padding: $menu-item-padding-y $menu-item-padding-x;
       cursor: pointer;
@@ -42,9 +45,6 @@
         color: $menu-item-active-color !important;
       }
     }
-  }
-  .meow-submenu.menu-opened {
-    display: block;
   }
 }
 
@@ -74,5 +74,18 @@
       border-left: $menu-item-active-border-width solid $menu-item-active-color;
     }
   }
+  // .meow-submenu-item {
+  //   position: relative;
+  //   &:hover {
+  //     .arrow-icon {
+  //       transform: none;
+  //     }
+  //   }
+  //   &.is-opened {
+  //     .arrow-icon {
+  //       transform: rotate(0.5turn);
+  //     }
+  //   }
+  // }
 }
 

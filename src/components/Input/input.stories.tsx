@@ -18,13 +18,13 @@ const appendInput = () => (
   </>
 )
 
-const iconInput = () => {
-  const [value, setValue] = useState('')
-  return <Input type="text" value={value} icon="calendar" onChange={e => setValue(e.target.value)}></Input>
+const IconInput = () => {
+  const [inputValue, setValue] = useState('')
+  return <Input type="text" value={inputValue} icon="calendar" onChange={e => setValue(e.target.value)}></Input>
 }
 
 storiesOf('Input', module)
   .add('Input', defaultInput)
   .add('Disabled Input', disabledInput)
   .add("Append Input", appendInput)
-  .add("Icon Input", iconInput)
+  .add("Icon Input", IconInput)

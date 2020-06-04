@@ -1,14 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import AutoComplete, { DataSourceType } from './autoComplete'
-
-interface ObjectType {
-  id?: number,
-  value: string,
-  url?: string,
-  login?: string
-}
+import AutoComplete from './autoComplete'
 
 const data = [{value: '123'}, {value: '234' }, {value: '345'}]
 

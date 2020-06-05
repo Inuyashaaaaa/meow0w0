@@ -2,20 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Upload from './upload'
 import { action } from '@storybook/addon-actions'
-
-const handleBeforeUpload = (file: File) => {
-  const fileSize = file.size / 1000 
-  if (fileSize > 50) {
-    alert('file too big')
-    return false
-  }
-  return true
-}
-
-const renameFile = (file: File) => {
-  const newFile = new File([file], 'new_file', { type: 'file' })
-  return Promise.resolve(newFile)
-}
+import Icon from '../Icon/icon'
 
 const DefaultUpload = () => (
   <Upload
@@ -23,8 +10,13 @@ const DefaultUpload = () => (
     onProgress={action('progress')}
     onSuccess={action('success')}
     onError={action('error')}
-    beforeUpload={renameFile}
+    accept=".jpg"
+    multiple
+    drag
   >
+    <Icon icon="upload" size="5x" theme="secondary" />
+    <br />
+    <p>Drag file over to upload</p>
   </Upload>
 )
 

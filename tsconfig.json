@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "build/lib",
+    "outDir": "dist/lib",
     "module": "esnext",
     "target": "es5",
     "lib": [
@@ -39,7 +39,7 @@
   ],
   "exclude": [
     "node_modules",
-    "build",
+    "dist",
     "scripts"
   ]
 }

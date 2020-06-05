@@ -7,6 +7,8 @@ export interface UploadProps {
   onSuccess?: (data: any, file: File) => void
   onError?: (err: any, file: File) => void
   onProgress?: (percentage: number, file: File) => void
+  onChange?: (file: File) => void
+  beforeUpload?: (file: File) => boolean | Promise<File>
 }
 
 export const Upload: FC<UploadProps> = (props) => {
@@ -14,7 +16,9 @@ export const Upload: FC<UploadProps> = (props) => {
     action,
     onSuccess,
     onError,
-    onProgress
+    onProgress,
+    beforeUpload,
+    onChange
   } = props
   const inputRef = useRef<HTMLInputElement>(null)
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +33,18 @@ export const Upload: FC<UploadProps> = (props) => {
   const uploadFiles = (files: FileList) => {
     const fileArr = Array.from(files)
     fileArr.forEach(file => {
-      const formData = new FormData()
+      if (beforeUpload) {
+        const results = beforeUpload(file)
+        if (results && results instanceof Promise) {
+          results.then(file => postFile(file))
+        } else if (results === true) {
+          postFile(file)
+        }
+      } 
+    })
+  }
+  const postFile = (file: File) => {
+    const formData = new FormData()
       formData.append(file.name, file)
       axios.post(action, formData, {
         headers: {
@@ -45,14 +60,17 @@ export const Upload: FC<UploadProps> = (props) => {
       .then(res => {
         console.log(res.data)
         if (onSuccess)
-        onSuccess(res.data, file)
+          onSuccess(res.data, file)
+        if (onChange)
+          onChange(file)
       })
       .catch(err => {
         console.error(err)
         if (onError)
-        onError(err, file)
+          onError(err, file)
+        if (onChange) 
+          onChange(file)
       })
-    })
   }
   const handleClick = (e: MouseEvent<HTMLInputElement>) => {
     if (inputRef.current) {
